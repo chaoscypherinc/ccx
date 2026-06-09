@@ -1,0 +1,20 @@
+name: Publish to PyPI
+
+# Manual-trigger only by policy. Publishes via PyPI trusted publishing (OIDC) —
+# no API token is stored anywhere.
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build sdist and wheel
+        run: pipx run build
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1

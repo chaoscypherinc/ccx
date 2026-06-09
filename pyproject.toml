@@ -1,0 +1,23 @@
+[project]
+name = "ccx"
+version = "0.0.1"
+description = "Reader for CCX (Chaos Cypher eXchange) — the open, portable knowledge-graph package format. Placeholder release; the standalone reader is in development."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{ name = "Denis MacPherson" }]
+keywords = ["ccx", "knowledge-graph", "graphrag", "package-format", "chaos-cypher", "lexicon"]
+classifiers = [
+    "Development Status :: 1 - Planning",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://chaoscypher.com"
+Repository = "https://github.com/chaoscypherinc/ccx"
+"Chaos Cypher" = "https://github.com/chaoscypherinc/chaoscypher"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
