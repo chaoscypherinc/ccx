@@ -1,4 +1,8 @@
-# ccx
+# ccx-format
+
+```
+pip install ccx-format   # → import ccx
+```
 
 **CCX (Chaos Cypher eXchange)** is the package format for portable, source-backed
 knowledge graphs — sources, entities, relationships, and citations in a single
