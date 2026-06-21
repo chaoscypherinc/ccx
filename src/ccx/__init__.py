@@ -14,7 +14,7 @@ from .package import CCXPackage, ValidationReport, open_package
 from .signing import generate_ed25519_keypair
 from .writer import PackageBuilder, write_package
 
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 
 __all__ = [
     "CCXError",
