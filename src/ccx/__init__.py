@@ -1,7 +1,35 @@
-"""CCX (Chaos Cypher eXchange) — the open, portable knowledge-graph package format.
+"""CCX (Chaos Cypher eXchange) — reference reader + writer for the open, portable
+knowledge-graph package format. See https://github.com/chaoscypherinc/ccx."""
 
-Placeholder release reserving the name for the standalone CCX reader.
-See https://github.com/chaoscypherinc/chaoscypher for the format and roadmap.
-"""
+from __future__ import annotations
 
-__version__ = "0.0.1"
+from .errors import (
+    CCXError,
+    CCXIntegrityError,
+    CCXSecurityError,
+    CCXValidationError,
+)
+from .manifest import AssetEntry, GraphEntry, Manifest, load_manifest
+from .package import CCXPackage, ValidationReport, open_package
+from .signing import generate_ed25519_keypair
+from .writer import PackageBuilder, write_package
+
+__version__ = "0.1.0"
+
+__all__ = [
+    "CCXError",
+    "CCXValidationError",
+    "CCXIntegrityError",
+    "CCXSecurityError",
+    "Manifest",
+    "GraphEntry",
+    "AssetEntry",
+    "load_manifest",
+    "CCXPackage",
+    "ValidationReport",
+    "open_package",
+    "PackageBuilder",
+    "write_package",
+    "generate_ed25519_keypair",
+    "__version__",
+]

@@ -1,0 +1,25 @@
+{
+  "@context": {
+    "ccx": "https://w3id.org/ccx/",
+    "schema": "https://schema.org/",
+    "Person": "schema:Person",
+    "Organization": "schema:Organization",
+    "name": "schema:name",
+    "worksFor": "schema:worksFor",
+    "Relationship": "ccx:Relationship",
+    "subject": "ccx:subject",
+    "predicate": "ccx:predicate",
+    "object": "ccx:object",
+    "Source": "ccx:Source",
+    "Chunk": "ccx:Chunk",
+    "Citation": "ccx:Citation",
+    "selector": "ccx:selector",
+    "sourceMode": "ccx:sourceMode",
+    "extractedBy": "ccx:extractedBy",
+    "embeddingModel": "ccx:embeddingModel",
+    "dimensions": "ccx:dimensions",
+    "citation": "ccx:citation",
+    "confidence": "ccx:confidence",
+    "extractionMethod": "ccx:extractionMethod"
+  }
+}

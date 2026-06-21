@@ -1,7 +1,7 @@
 [project]
 name = "ccx-format"
-version = "0.0.1"
-description = "Reader for CCX (Chaos Cypher eXchange) — the open, portable knowledge-graph package format. Placeholder release; the standalone reader is in development."
+version = "0.1.0"
+description = "Reference reader + writer for CCX (Chaos Cypher eXchange) — the open, JSON-LD-native, source-backed knowledge-graph package format."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "Apache-2.0"
@@ -12,6 +12,28 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
+dependencies = [
+    "rdflib>=7.0",
+    "jsonschema>=4.18",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "cryptography>=42"]
+# Validate a package's graphs against its shapes.ttl (CCXPackage.shacl_validate).
+# Detecting the Shapes class needs only rdflib (a core dep); this extra adds
+# data-validation against the shapes.
+shapes = ["pyshacl>=0.25"]
+# Read embedding vector sidecars (CCXPackage.read_embeddings). Detecting the
+# Embeddings class needs no extra; this extra adds Parquet sidecar reading.
+embeddings = ["pyarrow>=14"]
+# Produce + verify ed25519 detached signatures (PackageBuilder.sign,
+# CCXPackage.verify_signatures). Fully offline.
+signed = ["cryptography>=42"]
+# Verify Sigstore (identity-bound) signature bundles offline.
+signed-sigstore = ["sigstore>=3"]
+
+[project.scripts]
+ccx = "ccx.cli:main"
 
 [project.urls]
 Homepage = "https://chaoscypher.com"
@@ -24,3 +46,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/ccx"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
