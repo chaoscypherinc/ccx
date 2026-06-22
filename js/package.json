@@ -1,6 +1,6 @@
 {
   "name": "@chaoscypherinc/ccx-format",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Reference TypeScript reader/validator for CCX (Chaos Cypher eXchange) — the open, JSON-LD-native knowledge-graph package format.",
   "license": "Apache-2.0",
   "author": "Denis MacPherson",
@@ -21,6 +21,7 @@
     "sync-schema": "node scripts/sync-schema.mjs",
     "prebuild": "npm run sync-schema",
     "build": "tsup",
+    "smoke": "node scripts/smoke-esm.mjs",
     "pretest": "npm run sync-schema",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",

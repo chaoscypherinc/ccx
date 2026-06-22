@@ -7,7 +7,10 @@
  * schema, then map the snake_case JSON onto the camelCase `CcxManifest`.
  */
 
-import Ajv2020 from "ajv/dist/2020";
+// NOTE: the `.js` extension is required — ajv has no `exports` map, so Node's
+// native ESM resolver needs the explicit deep-import path (without it the built
+// dist throws ERR_MODULE_NOT_FOUND for any Node-ESM consumer).
+import Ajv2020 from "ajv/dist/2020.js";
 
 import schema from "./schema/manifest.schema.json";
 import { CcxValidationError } from "./errors";
