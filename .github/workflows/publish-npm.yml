@@ -1,0 +1,33 @@
+name: Publish to npm
+
+# Manual-trigger only by policy. Publishes via npm trusted publishing (OIDC) with
+# build provenance — no API token is stored anywhere. Mirrors the PyPI policy in
+# publish.yml.
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+      - name: Build
+        working-directory: js
+        run: |
+          npm ci
+          npm run build
+      - name: Publish to npm
+        working-directory: js
+        run: npm publish --provenance --access public
+        env:
+          # Trusted publishing (OIDC) needs no token. If trusted publishing is not
+          # configured, set an NPM_TOKEN repo/environment secret as a fallback.
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

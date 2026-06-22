@@ -1,0 +1,13 @@
+export const MIMETYPE = "application/vnd.ccx+zip";
+export const CCX_VERSION = "3.0";
+export const MIMETYPE_PATH = "mimetype";
+export const MANIFEST_PATH = "manifest.json";
+export const CONTEXT_PATH = "context.jsonld";
+export const SOURCES_PATH = "sources.jsonl";
+export const SHAPES_PATH = "shapes.ttl";
+export const SIGNATURE_PATH = "signatures/manifest.sig";
+export const SOURCE_MODES = ["embedded", "referenced", "derived-only"] as const;
+export const MAX_ENTRIES = 100_000;
+export const MAX_ENTRY_UNCOMPRESSED = 512 * 1024 * 1024;
+export const MAX_TOTAL_UNCOMPRESSED = 2 * 1024 * 1024 * 1024;
+export const RESERVED_PQC_FORMATS = ["ml-dsa-44", "ml-dsa-65", "ml-dsa-87", "slh-dsa-128s", "slh-dsa-256s"] as const;

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://w3id.org/ccx/schema/3.0/manifest.schema.json",
+  "title": "CCX 3.0 Manifest",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["ccx_version", "name", "package_version", "graphs"],
+  "properties": {
+    "ccx_version": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "package_version": { "type": "string", "minLength": 1 },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "author": { "type": "string" },
+    "license": { "type": "string" },
+    "created_at": { "type": "string" },
+    "base_iri": { "type": "string" },
+    "generator": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "derived_from": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "dependencies": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "graphs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["namespace", "name", "path", "media_type", "sha256", "sha512"],
+        "properties": {
+          "namespace": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "enum": ["default"] },
+          "path": { "type": "string", "minLength": 1 },
+          "media_type": { "type": "string" },
+          "sha256": { "type": "string", "minLength": 1 },
+          "sha512": { "type": "string", "minLength": 1 },
+          "license": { "type": "string" }
+        }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["path", "media_type", "sha256", "sha512"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "media_type": { "type": "string" },
+          "sha256": { "type": "string", "minLength": 1 },
+          "sha512": { "type": "string", "minLength": 1 },
+          "source_mode": {
+            "type": "string",
+            "enum": ["embedded", "referenced", "derived-only"]
+          },
+          "license": { "type": "string" }
+        }
+      }
+    },
+    "embeddings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["model", "dimensions"],
+        "properties": {
+          "model": { "type": "string", "minLength": 1 },
+          "provider": { "type": "string" },
+          "dimensions": { "type": "integer", "minimum": 1 },
+          "included": { "type": "boolean" },
+          "path": { "type": "string" },
+          "coverage": { "type": ["string", "object"] }
+        }
+      }
+    },
+    "signatures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": true,
+        "required": ["path"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "format": { "type": "string" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@chaoscypherinc/ccx-format",
+  "version": "0.1.0",
+  "description": "Reference TypeScript reader/validator for CCX (Chaos Cypher eXchange) — the open, JSON-LD-native knowledge-graph package format.",
+  "license": "Apache-2.0",
+  "author": "Denis MacPherson",
+  "type": "module",
+  "publishConfig": { "access": "public" },
+  "engines": { "node": ">=18" },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js", "require": "./dist/index.cjs" }
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "keywords": ["ccx", "knowledge-graph", "json-ld", "rdf", "graphrag", "package-format"],
+  "repository": { "type": "git", "url": "https://github.com/chaoscypherinc/ccx", "directory": "js" },
+  "homepage": "https://chaoscypher.com",
+  "scripts": {
+    "sync-schema": "node scripts/sync-schema.mjs",
+    "prebuild": "npm run sync-schema",
+    "build": "tsup",
+    "pretest": "npm run sync-schema",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": { "jszip": "^3.10.1", "ajv": "^8.17.1" },
+  "devDependencies": { "typescript": "^5.6.0", "tsup": "^8.3.0", "vitest": "^2.1.0", "@types/node": "^20.0.0" }
+}
